@@ -60,11 +60,11 @@ function App() {
 
   return (
     <>
-      <div className={`${theme==="dark"?"bg-black":"bg-amber-100"} w-full h-dvh`}>
+      <div className={`${theme==="dark"?"bg-black":"bg-amber-100"} w-full h-auto`}>
           <Navbar/>
-          <div className='flex flex-wrap gap-1.5 p-4'>
-              {loading && <div>Loading...</div>}
-              {isError && <div>Something went wrong</div>}
+          <div className='flex flex-wrap gap-1.5 p-4 justify-center'>
+              {loading && <div aria-label='Loading'>Loading...</div>}
+              {isError && <div aria-label='Error Occur'>Something went wrong</div>}
               {!loading && !isError && products.map(product => {
                   return <ProductCard key={product.id} product={product} />
               })}

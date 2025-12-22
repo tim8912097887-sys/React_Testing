@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className="w-full h-full px-5 flex justify-between items-center">
          <h1 className={`${theme==="dark"?"text-white":"text-black"} font-bold text-3xl`}>Resturant</h1>
          <div>
-            {theme==="dark"?<BsBrightnessLow className="text-3xl cursor-pointer text-amber-50" onClick={setLightMode} />:<BsBrightnessHighFill className="text-3xl cursor-pointer " onClick={setDarkMode} />}
+            {theme==="dark"?<button className="text-3xl cursor-pointer" aria-label="toggle theme" onClick={setLightMode}><BsBrightnessLow data-testid="light-icon" className="text-amber-50" /></button>:<button className="text-3xl cursor-pointer" aria-label="toggle theme" onClick={setDarkMode}><BsBrightnessHighFill data-testid="dark-icon" /></button>}
          </div>
       </div>
     </nav>

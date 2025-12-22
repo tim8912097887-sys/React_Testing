@@ -15,7 +15,7 @@ const Pagination = ({ currentPage,totalPages,setCurrentPage }:Props) => {
        if(currentPage < totalPages) setCurrentPage(currentPage+1);
     } 
     const setPrePage = () => {
-        if(currentPage > 2) setCurrentPage(currentPage-1);
+        if(currentPage > 1) setCurrentPage(currentPage-1);
     }
     
     // caculate first and last page base on current page
@@ -28,20 +28,20 @@ const Pagination = ({ currentPage,totalPages,setCurrentPage }:Props) => {
        {
          firstPage > 1 &&
          <>
-           <button className="border border-black py-0 px-2 hover:bg-gray-300 transition-all duration-300 cursor-pointer" onClick={() => setCurrentPage(1)}>1</button>
-           {firstPage > 2 && <p>...</p>}
+           <button aria-label={`Go to page 1`} className="border border-black py-0 px-2 hover:bg-gray-300 transition-all duration-300 cursor-pointer" onClick={() => setCurrentPage(1)}>1</button>
+           {firstPage > 2 && <p aria-label="left ellipse">...</p>}
          </>
        }
        {totalPages > 1 && 
          Array.from({ length: lastPage-firstPage+1 },(_,index) => index).map((_,num) => {
-             return <button className={`border border-black ${currentPage===firstPage+num?"py-1 px-3":"py-0 px-2"} hover:bg-gray-300 transition-all duration-300 cursor-pointer`} key={firstPage+num} onClick={() => setCurrentPage(firstPage+num)}>{firstPage+num}</button>
+             return <button aria-label={`Go to page ${firstPage+num}`} className={`border border-black ${currentPage===firstPage+num?"py-1 px-3":"py-0 px-2"} hover:bg-gray-300 transition-all duration-300 cursor-pointer`} key={firstPage+num} onClick={() => setCurrentPage(firstPage+num)}>{firstPage+num}</button>
          })
        }
        {
         lastPage < totalPages && 
         <>
-          {(lastPage < totalPages-1) && <p>...</p>}
-          <button className="border border-black py-0 px-2 hover:bg-gray-300 transition-all duration-300 cursor-pointer" onClick={() => setCurrentPage(totalPages)}>{totalPages}</button>
+          {(lastPage < totalPages-1) && <p aria-label="right ellipse">...</p>}
+          <button aria-label={`Go to page ${totalPages}`} className="border border-black py-0 px-2 hover:bg-gray-300 transition-all duration-300 cursor-pointer" onClick={() => setCurrentPage(totalPages)}>{totalPages}</button>
         </>
        }  
        <button className="border border-black py-0 px-2 hover:bg-gray-300 transition-all duration-300 cursor-pointer ml-2" onClick={setNextPage}>&#62;</button>  
